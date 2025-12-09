@@ -14,4 +14,5 @@ export const load = async ({ params }) => {
     // console.log(seasons_data.data);
     const seasons = seasons_data.data;
     const currentSeason = seasons.find(season => season.program.code === "V5RC");
+    seasonId.set(currentSeason.id);
 }
