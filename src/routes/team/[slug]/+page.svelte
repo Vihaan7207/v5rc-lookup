@@ -10,7 +10,7 @@
 <h1>An error occurred. Does the team you entered exist?</h1>
 
 {:else if team_data}
-<div class="card w-96 card-lg bg-base-300 m-10 hover-shadow">
+<div class="reg-card">
     <div class="card-body">
         <h2 class="card-title">Team Data</h2>
         <h4>Number: {team_data.number}</h4>
@@ -21,12 +21,12 @@
     </div>
 </div>
 
-<div class="card w-max card-xl bg-base-300 m-10 hover-shadow">
+<div class="reg-card">
     <div class="card-body">
         <h2 class="card-title">{team_data.number}'s Events:</h2>
         <ul>
             {#each team_events.data as event (event.id)}
-            <li><a class="link" href={`/event/${event.id}`}><button class="btn btn-soft btn-primary mt-4">{event.name}</button></a></li>
+            <li><a class="link" href={`/event/${event.id}`}><button class="btn btn-soft btn-primary mt-4 text-left">{event.name}</button></a></li>
             {/each}
         </ul>
     </div>

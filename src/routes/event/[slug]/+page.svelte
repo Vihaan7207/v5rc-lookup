@@ -22,7 +22,7 @@
 <h1>There was an error. Does this event exist?</h1>
 
 {:else}
-<div class="card w-max card-lg bg-base-300 m-10 hover-shadow shrink">
+<div class="reg-card">
     <div class="card-body">
         <h2 class="card-title">Event Data</h2>
         <h4>Name: {event_data.name}</h4>
@@ -34,10 +34,10 @@
     </div>
 </div>
 
-<div class="card w-max card-lg bg-base-300 m-10 hover-shadow">
+<div class="reg-card">
     <div class="card-body">
         <h2 class="card-title">Teams:</h2>
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] max-w-[900px] mx-auto gap-1 place-items-center">
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] max-w-[900px] mx-auto gap-1 place-items-center ">
 
             {#each event_teams as team (team.id)}
             <a class="link" href={`/team/${team.number}`}><button class="btn btn-soft btn-primary mt-4">{team.number}</button></a>
