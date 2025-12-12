@@ -74,7 +74,56 @@ export const load = async ({ params }) =>  {
 
         // console.log(wins, losses, ties);
 
-        // let team_skills_response = await fetch
+        let team_skills_response = await fetch(`https://www.robotevents.com/api/v2/teams/${team_data.data[0].id}/skills?season=${get(seasonId)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_TOKEN}`
+            }
+        });
+        
+       let team_skills_data = await team_skills_response.json();
+       let skillsRuns = [];
+        for(let i = 0; i < team_skills_data.data.length; i++) {
+            let current_run = team_skills_data.data[i];
+            let next_run = team_skills_data.data[i+1];
+            let run = {
+                eventName: '',
+                driver: null,
+                programming: null
+            }
+
+            if (next_run){
+                if (current_run.event.id === next_run.event.id) {
+                    // console.log(current_run.event.id);
+                    run.eventName = current_run.event.name;
+                    if (current_run.type === "driver") {
+                        run.driver = current_run.score;
+                    }
+                    else if (current_run.type === "programming") {
+                        run.programming === current_run.score;
+                    }
+                    if (next_run.type === "driver") {
+                        run.driver = next_run.score;
+                    }
+                    else if (next_run.type === "programming") {
+                        run.programming = next_run.score;
+                    }
+                    i++;
+                }
+            }
+
+            run.eventName = current_run.event.name;
+            if (current_run.type === "driver") {
+                run.driver = current_run.score;
+            }
+            else if (current_run.type === "programming") {
+                run.programming === current_run.score;
+            }
+            // console.log(run);
+            skillsRuns.push(run);
+        }
+        // console.log(skillsRuns);
         
 
         return {
@@ -84,7 +133,8 @@ export const load = async ({ params }) =>  {
             wins,
             losses,
             ties,
-            rankingsList
+            rankingsList,
+            skillsRuns
         };
 
     }
