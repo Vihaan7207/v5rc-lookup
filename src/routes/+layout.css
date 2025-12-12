@@ -8,5 +8,5 @@
 }
 
 .reg-card {
-  @apply card w-max card-lg bg-base-300 m-10 shrink max-w-[70vw] hover:shadow-md transition-shadow duration-320 ease-in-out
+  @apply card w-max card-lg bg-base-300 shrink hover:shadow-md transition-shadow duration-320 ease-in-out
 }
