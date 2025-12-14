@@ -140,7 +140,8 @@ export const load = async ({ params }) => {
             errors: false,
             event_data,
             event_teams_list,
-            ranks_by_div: ranksByDiv
+            ranks_by_div: ranksByDiv,
+            id
         }
 
     }

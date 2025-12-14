@@ -1,5 +1,6 @@
 <script>
     export let data;
+    import { goto } from '$app/navigation';
 
     const event_data = data.event_data;
     const event_teams = data.event_teams_list;
@@ -19,7 +20,7 @@
     // }
     let rankIndex = 1;
     // console.log(data.ranks_by_div);
-        
+    
     
 </script>
 
@@ -37,7 +38,7 @@
         <h4>Address: {event_data.location.address_1}, {event_data.location.city}, {event_data.location.region}</h4>
         <h4>Date: {formatDate(event_data.start)}-{formatDate(event_data.end)}</h4>
         <h4>Type: {event_data.level}</h4>
-
+        <button class="btn" on:click={goto(`${data.id}/matchups`)}>Matchups</button>
     </div>
 </div>
 
