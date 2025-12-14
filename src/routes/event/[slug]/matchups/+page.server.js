@@ -48,14 +48,17 @@ export const load = async ({ params }) => {
                    blue: {
                     score: match.alliances[0].score,
                     team1: match.alliances[0].teams[0].team.name,
-                    team2: match.alliances[0].teams[1].team.name
+                    team2: match.alliances[0].teams[1].team.name,
+                    teams: [match.alliances[0].teams[0].team.name, match.alliances[0].teams[1].team.name]
                    },
                    red: {
                     score: match.alliances[1].score,
                     team1: match.alliances[1].teams[0].team.name,
-                    team2: match.alliances[1].teams[1].team.name
+                    team2: match.alliances[1].teams[1].team.name,
+                    teams: [match.alliances[1].teams[0].team.name, match.alliances[1].teams[1].team.name]
                    },
-                   allteams: [match.alliances[0].teams[0].team.name, match.alliances[0].teams[1].team.name, match.alliances[1].teams[0].team.name, match.alliances[1].teams[1].team.name]
+                   allteams: [match.alliances[0].teams[0].team.name, match.alliances[0].teams[1].team.name, match.alliances[1].teams[0].team.name, match.alliances[1].teams[1].team.name],
+                   winner: match.alliances[1].score > match.alliances[0].score ? 'red' : 'blue'
                 });
             }
 
@@ -80,18 +83,20 @@ export const load = async ({ params }) => {
                     div_matches.push({
                         num: match.matchnum,
                         round: rounds[match.round - 1],
-                        roundnum: match.round,
                         blue: {
                             score: match.alliances[0].score,
                             team1: match.alliances[0].teams[0].team.name,
-                            team2: match.alliances[0].teams[1].team.name
+                            team2: match.alliances[0].teams[1].team.name,
+                            teams: [match.alliances[0].teams[0].team.name, match.alliances[0].teams[1].team.name]
                         },
                         red: {
                             score: match.alliances[1].score,
                             team1: match.alliances[1].teams[0].team.name,
-                            team2: match.alliances[1].teams[1].team.name
+                            team2: match.alliances[1].teams[1].team.name,
+                            teams: [match.alliances[1].teams[0].team.name, match.alliances[1].teams[1].team.name]
                         },
-                        allteams: [match.alliances[0].teams[0].team.name, match.alliances[0].teams[1].team.name, match.alliances[1].teams[0].team.name, match.alliances[1].teams[1].team.name]
+                        allteams: [match.alliances[0].teams[0].team.name, match.alliances[0].teams[1].team.name, match.alliances[1].teams[0].team.name, match.alliances[1].teams[1].team.name],
+                        winner: match.alliances[1].score > match.alliances[0].score ? 'red' : 'blue'
                     });
                 }
             }
