@@ -29,7 +29,7 @@
 {:else}
 <div class="flex gap-4">
 <div class="flex flex-col gap-4 w-1/2">
-<div class="reg-card min-w-[50vw] max-w-[50vw] m-10">
+<div class="reg-card min-w-[52vw] max-w-[52vw] m-10">
     <div class="card-body">
         <h2 class="card-title">Event Data</h2>
         <h4>Name: {event_data.name}</h4>
@@ -41,31 +41,34 @@
     </div>
 </div>
 
-<div class="reg-card max-w-[50vw] ml-10">
+<div class="reg-card min-w-[50vw] max-w-[52vw] ml-10">
     <div class="card-body">
-        <h2 class="card-title">Teams:</h2>
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] max-w-[50vw] mx-auto gap-1 place-items-center ">
+        <h2 class="card-title">All Teams:</h2>
+        <div class="overflow-auto h-[40vh]">
 
-            {#each event_teams as team (team.id)}
-            <a class="link" href={`/team/${team.number}`}><button class="btn btn-soft btn-primary mt-4">{team.number}</button></a>
-            {/each}
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] max-w-[50vw] mx-auto gap-1 place-items-center ">
+                
+                {#each event_teams as team (team.id)}
+                <a class="link" href={`/team/${team.number}`}><button class="btn btn-soft btn-primary mt-4">{team.number}</button></a>
+                {/each}
+            </div>
         </div>
     </div>
 </div>
 </div>
 <div class="w-1/2">
 
-<div class="reg-card min-w-[40vw] m-10">
+<div class="reg-card min-w-[40vw] ml-20 mt-10">
     <div class="card-body">
         <h2 class="card-title">Division Rankings</h2>
-        <div>
+        <div class="overflow-auto h-[70vh]">
             {#each data.ranks_by_div as div (rankIndex)}
             <h2 class="bold">Division {rankIndex}</h2>
-            <table class="table table-zebra">
+            <table class="table table-zebra table-pin-rows">
                 <thead>
                     <tr>
                         <th>Rank</th>
-                        <th>Name</th>
+                        <th>Team</th>
                         <th>Record</th>
                         <th>WP</th>
                         <th>AP</th>

@@ -60,15 +60,15 @@ export const load = async ({ params }) =>  {
 
         const team_matches_data = await team_matches_response.json();
 
-        let index = 0;
+        // let index = 0;
         for (const event of team_matches_data.data) {
-            index++;
+            // index++;
             wins += event.wins;
             losses += event.losses;
             ties += event.ties;
-            rankingsList.push({index, name: event.event.name, wins: event.wins, losses: event.losses, ties: event.ties, rank: event.rank});
+            rankingsList.push({name: event.event.name, wins: event.wins, losses: event.losses, ties: event.ties, rank: event.rank});
         }
-
+        rankingsList = rankingsList.reverse();
         // console.log(rankingsList);
         
 
@@ -141,7 +141,8 @@ export const load = async ({ params }) =>  {
     catch (error) {
         console.log(error);
         return {
-            errors: true
+            errors: true,
+            error
         }
         
     }
